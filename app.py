@@ -128,7 +128,7 @@ def handle_check_gridshare(host, port, user, ssh_key, comfy_url):
     report_md += f"• **Total VRAM:** `{status.get('vram_total_gb')} GB` (Target: 20GB VRAM)\n"
     report_md += f"• **Free VRAM:** `{status.get('vram_free_gb')} GB`\n"
     report_md += f"• **Temperature:** `{status.get('gpu_temp')}`\n"
-    report_md += f"• **Disk Footprint:** `{status.get('disk_info')}`\n"
+    report_md += f"• **Disk Footprint:** `{status.get('disk_used_gb', 0.0):.1f} GB / 50.0 GB Max Budget`\n"
     report_md += f"• **ComfyUI API:** `{status.get('comfy_status')}`\n\n"
 
     report_md += "#### 🔍 20GB VRAM Workflow & Node Audit:\n"
@@ -136,10 +136,15 @@ def handle_check_gridshare(host, port, user, ssh_key, comfy_url):
     report_md += f"- **MiniMax H3 (Exclusively for 20GB DiT Animation):** {'✅ Ready' if workflow_info.get('minimax_h3_20gb_ready') else '❌ Missing'}\n"
     report_md += f"- **Indic F5-TTS conditioned on Gemini Fenrir:** {'✅ Ready' if workflow_info.get('indic_f5tts_fenrir_ready') else '❌ Missing'}\n\n"
 
-    if workflow_info.get("all_workflows_ready"):
-        report_md += "🎉 **Status: All 20GB VRAM Workflows are fully verified and ready for mobile production!**"
+    if workflow_info.get("weights_already_cached"):
+        report_md += "🟢 **Smart Cache Guard Active:** All required workflow weights already exist on GPU server! **Re-push is automatically SKIPPED** to save time and disk.\n"
     else:
-        report_md += "⚠️ **Action Needed:** Some workflows or nodes are missing on the instance. Click **'Auto-Deploy & Setup Workflows'** below to configure them automatically."
+        report_md += "🟡 **Deployment Check:** Some weights missing. Auto-Deploy will safely install them **strictly within the 50 GB ceiling**.\n"
+
+    if workflow_info.get("all_workflows_ready"):
+        report_md += "\n🎉 **Status: All 20GB VRAM Workflows are fully verified and ready for mobile production!**"
+    else:
+        report_md += "\n⚠️ **Action Needed:** Click **'Auto-Deploy & Setup Workflows'** below to safely configure them."
 
     return report_md
 

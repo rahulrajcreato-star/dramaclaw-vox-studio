@@ -68,6 +68,7 @@ DEFAULT_GRIDSHARE_CONFIG = {
 
 GPU_VRAM_TARGET_GB = 20.0
 MAX_VRAM_ALLOCATION_GB = 18.5  # Safe headroom to prevent CUDA OOM
+MAX_GPU_DISK_LIMIT_GB = 50.0    # Strict 50 GB disk storage ceiling on remote GPU server
 
 # -----------------------------------------------------------------------------
 # 4. Project Paths
@@ -80,3 +81,4 @@ STATIC_DIR.mkdir(parents=True, exist_ok=True)
 SHINKAI_REF_IMAGE = STATIC_DIR / "shinkai_roof_ref.jpg"
 FENRIR_REF_AUDIO = STATIC_DIR / "gemini_male_fenrir.wav"
 F5_CONDITIONED_AUDIO = STATIC_DIR / "f5_tts_gemini_conditioned_sample.wav"
+
