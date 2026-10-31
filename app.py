@@ -133,7 +133,7 @@ def handle_check_gridshare(host, port, user, ssh_key, comfy_url):
 
     report_md += "#### 🔍 20GB VRAM Workflow & Node Audit:\n"
     report_md += f"- **Qwen Image 2.1 + Turbo (8-9 steps) + Color Node:** {'✅ Ready' if workflow_info.get('qwen_turbo_colornode_ready') else '❌ Missing'}\n"
-    report_md += f"- **MiniMax H3 / Wan 2.1 (20GB DiT Video):** {'✅ Ready' if workflow_info.get('minimax_wan_20gb_ready') else '❌ Missing'}\n"
+    report_md += f"- **MiniMax H3 (Exclusively for 20GB DiT Animation):** {'✅ Ready' if workflow_info.get('minimax_h3_20gb_ready') else '❌ Missing'}\n"
     report_md += f"- **Indic F5-TTS conditioned on Gemini Fenrir:** {'✅ Ready' if workflow_info.get('indic_f5tts_fenrir_ready') else '❌ Missing'}\n\n"
 
     if workflow_info.get("all_workflows_ready"):
@@ -326,10 +326,11 @@ def build_interface():
 
                     with gr.Column():
                         gr.Markdown("""
-                        #### 🎬 Workflow 2: MiniMax H3 / Wan 2.1 Targeted Motion (20GB DiT)
-                        • **Model:** Pruned INT8 UNet + NVFP4 Text Encoder  
-                        • **Inference Steps:** 4 to 9 steps with Turbo LoRA  
-                        • **Targeted Motion:** Foreground & dynamic elements only (zero background wobble)  
+                        #### 🎬 Workflow 2: MiniMax H3 Targeted Motion Animation (Exclusively for Video)
+                        • **Model:** MiniMax H3 Pruned INT8 UNet + NVFP4 Text Encoder  
+                        • **Inference Steps:** 4 steps with Turbo LoRA  
+                        • **Targeted Motion:** Dynamic elements animate, background architecture stays 100% solid  
+                        • **Audio:** Synchronized 32kHz stereo foley bed generation  
                         • **VRAM Usage:** ~15.4 GB (Safe from CUDA OOM on 20GB GPUs)  
                         """)
 

@@ -130,7 +130,7 @@ def run_autonomous_orchestra_pipeline(
     # -------------------------------------------------------------------------
     # STAGE 4: SEQUENTIAL TARGETED ANIMATION (20GB VRAM Safe Execution)
     # -------------------------------------------------------------------------
-    log("⚡ Stage 4/7: Sequential Targeted Animation (MiniMax H3 / Wan 2.1 Targeted Motion Engine)...")
+    log("⚡ Stage 4/7: Sequential Targeted Animation (MiniMax H3 Targeted Motion Engine)...")
     clip_paths = []
     width = 1080 if format_aspect == "9:16" else 1920
     height = 1920 if format_aspect == "9:16" else 1080
@@ -247,3 +247,4 @@ def run_autonomous_orchestra_pipeline(
         "story_analysis": analysis_text,
         "logs": logs
     }
+

@@ -33,7 +33,7 @@ DramaClaw is an industrialized, autonomous video production system engineered fo
 
 4. **🎬 Targeted Motion Animation (No Dizzying Zoom):**
    - **Targeted Motion Principle:** Architectural bedrock and geometry stay rock-solid; only selective focal elements (torch embers, sonar sweeps, laser scanlines, water ripples) animate.
-   - **MiniMax H3 / Wan 2.1 I2V 14B Q4_K_M GGUF:** Quantized neural video generation for 20GB GPUs.
+   - **MiniMax H3 Omni-Modal Video Engine:** Exclusively used for neural targeted animation and synchronized 32kHz ambient foley bed. Pruned INT8 UNet + NVFP4 AWQ CLIP calibrated for 20GB GPUs.
 
 5. **🎙️ Indic F5-TTS Conditioned with Gemini Fenrir Voice:**
    - High-fidelity Indic F5-TTS conditioned on Gemini's native *Fenrir* male voice sample for natural, authoritative documentary narration.
@@ -68,7 +68,7 @@ DramaClaw is an industrialized, autonomous video production system engineered fo
                 │
                 ▼
   [ Stage 4: Sequential Targeted Animation ]
-    - MiniMax H3 / Wan 2.1 GGUF (Strictly < 18GB VRAM)
+    - MiniMax H3 Omni-Modal Engine (Strictly < 16GB VRAM)
                 │
                 ▼
   [ Stage 5: Voiceover & Audio Design ]
@@ -138,3 +138,4 @@ python app.py
 
 ## 📄 License
 MIT License. Created with ❤️ for autonomous AI cinema and investigative journalism.
+

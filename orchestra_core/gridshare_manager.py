@@ -130,13 +130,13 @@ class GridShareManager:
         Pre-flight check:
         Verifies presence of:
         1. Qwen Image 2.1 + Turbo LoRA + ColorTransfer Node (MKL LAB)
-        2. MiniMax H3 / Wan 2.1 (20GB VRAM quantized nodes)
+        2. MiniMax H3 (Exclusively for 20GB VRAM Animation)
         3. Indic F5-TTS conditioned on Gemini Fenrir voice
         """
         inspection = {
             "comfyui_reachable": False,
             "qwen_turbo_colornode_ready": False,
-            "minimax_wan_20gb_ready": False,
+            "minimax_h3_20gb_ready": False,
             "indic_f5tts_fenrir_ready": False,
             "all_workflows_ready": False,
             "missing_components": [],
@@ -166,15 +166,15 @@ class GridShareManager:
             if not has_color_transfer: missing.append("ColorTransfer Node (ComfyUI-Color-Transfer)")
             inspection["missing_components"].extend(missing)
 
-        # 2. MiniMax / Wan 2.1 Video Nodes
+        # 2. MiniMax H3 Video Nodes (Exclusively for Animation)
         has_vhs = "VHS_VideoCombine" in data
-        has_minimax = ("MiniMaxH3ImageToVideo" in data) or ("UnetLoaderGGUFAdvanced" in data) or ("WanImageToVideo" in data)
+        has_minimax = ("MiniMaxH3ImageToVideo" in data) or ("MiniMaxH3SigmaShift" in data)
         if has_vhs and has_minimax:
-            inspection["minimax_wan_20gb_ready"] = True
+            inspection["minimax_h3_20gb_ready"] = True
         else:
             missing = []
             if not has_vhs: missing.append("VideoHelperSuite (VHS_VideoCombine)")
-            if not has_minimax: missing.append("MiniMax/Wan 2.1 (GGUF / DiT Nodes)")
+            if not has_minimax: missing.append("MiniMax H3 ImageToVideo Node")
             inspection["missing_components"].extend(missing)
 
         # 3. Indic F5-TTS Audio Engine
@@ -183,6 +183,10 @@ class GridShareManager:
         inspection["indic_f5tts_fenrir_ready"] = f5_check
 
         inspection["all_workflows_ready"] = (
+            inspection["qwen_turbo_colornode_ready"] and
+            inspection["minimax_h3_20gb_ready"] and
+            inspection["indic_f5tts_fenrir_ready"]
+        )
             inspection["qwen_turbo_colornode_ready"] and
             inspection["minimax_wan_20gb_ready"] and
             inspection["indic_f5tts_fenrir_ready"]
@@ -348,3 +352,4 @@ class GridShareManager:
             err_msg = f"Auto-deployment failed: {e}"
             log(f"❌ {err_msg}")
             return {"success": False, "error": err_msg, "logs": logs}
+
