@@ -1,0 +1,38 @@
+# Credentials & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# Archives & Large Zips
+*.zip
+*.tar.gz
+*.tar
+*.rar
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Large Video & Audio Outputs
+*.mp4
+*.mkv
+*.wav
+*.mp3
+!static/*.wav
+!static/*.mp3
+orchestra_outputs/*
+!orchestra_outputs/.gitkeep
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,160 @@
+/* ==========================================================================
+   DramaClaw Master Studio - Mobile-Optimized Makoto Shinkai CSS
+   ========================================================================== */
+
+:root {
+    --bg-primary: #0A192F;
+    --bg-secondary: #0F2027;
+    --bg-card: rgba(23, 42, 69, 0.85);
+    --accent-cyan: #00F2FE;
+    --accent-gold: #F6D365;
+    --text-primary: #E2E8F0;
+    --text-muted: #94A3B8;
+    --border-color: rgba(0, 242, 254, 0.25);
+}
+
+body, .gradio-container {
+    background: linear-gradient(145deg, #0A192F 0%, #0F2027 40%, #203A43 100%) !important;
+    color: var(--text-primary) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 8px !important;
+}
+
+/* Header & Title Banner */
+.hero-banner {
+    background: linear-gradient(90deg, rgba(15, 32, 39, 0.95), rgba(32, 58, 67, 0.95));
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-title {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg, #00F2FE, #4FACFE, #F6D365);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 6px 0 !important;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem !important;
+    color: var(--text-muted);
+    margin: 0 !important;
+}
+
+/* Status Telemetry Cards (Mobile-Responsive Flex) */
+.telemetry-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.telemetry-card {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 140px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.telemetry-card b {
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.telemetry-card code {
+    color: var(--accent-gold);
+    font-size: 0.8rem;
+    word-break: break-all;
+}
+
+/* Touch-Friendly Buttons */
+button.primary-touch-btn, .gr-button-primary {
+    background: linear-gradient(90deg, #00F2FE 0%, #4FACFE 100%) !important;
+    color: #0A192F !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    min-height: 48px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3) !important;
+    transition: transform 0.1s ease, box-shadow 0.2s ease !important;
+}
+
+button.primary-touch-btn:active, .gr-button-primary:active {
+    transform: scale(0.98) !important;
+}
+
+.gr-button-secondary {
+    background: #172A45 !important;
+    color: var(--accent-gold) !important;
+    border: 1px solid var(--accent-gold) !important;
+    min-height: 44px !important;
+    border-radius: 8px !important;
+}
+
+/* Tabs Mobile Adaptability */
+.tabs {
+    border-radius: 10px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(15, 32, 39, 0.6) !important;
+}
+
+.tab-nav button {
+    font-size: 0.9rem !important;
+    padding: 8px 12px !important;
+}
+
+.tab-nav button.selected {
+    color: var(--accent-cyan) !important;
+    border-bottom: 2px solid var(--accent-cyan) !important;
+}
+
+/* Card Styling */
+.card-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+/* Responsive Table */
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 0.85rem !important;
+}
+
+th, td {
+    padding: 6px 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+th {
+    background: rgba(0, 242, 254, 0.1) !important;
+    color: var(--accent-cyan) !important;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 768px) {
+    .telemetry-card {
+        flex: 1 1 100% !important;
+    }
+    .hero-title {
+        font-size: 1.3rem !important;
+    }
+    button {
+        width: 100% !important;
+    }
+}
